@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import useTimer from './useTimer';
+import useTimer from '../utils/useTimer';
 
-import { calculateTimeFraction } from './timeUtils';
+import { calculateTimeFraction } from '../utils/timeUtils';
 
 const k = (283 * 180) / (60 * 44.85 * Math.PI);
 
@@ -52,7 +52,7 @@ const Timer = ({ duration }) => {
           "
           ></Path>
           <Marker
-            fill="royalblue"
+            fill="none"
             width="5"
             height="8"
             rx="2"
@@ -63,12 +63,12 @@ const Timer = ({ duration }) => {
         </Circle>
       </TimerSvg>
       <span>{formattedTime}</span>
-      <Button onClick={reset} type="button">
+      <button onClick={reset} type="button">
         Reset
-      </Button>
-      <Button onClick={togglePause} type="button">{`${
+      </button>
+      <button onClick={togglePause} type="button">{`${
         isPaused ? 'Start' : 'Pause'
-      }`}</Button>
+      }`}</button>
     </div>
   );
 };
@@ -90,7 +90,7 @@ const Circle = styled.g`
 
 const Path = styled.path`
   stroke-width: 5px;
-  stroke-linecap: square;
+  stroke-linecap: butt;
   transform: rotate(90deg);
   transform-origin: center;
   transition: 1s linear all;
@@ -108,7 +108,3 @@ const Elapsed = styled.circle`
   stroke-width: 5px;
   stroke: grey;
 `;
-
-const Button = styled.button`
-display: block;
-`

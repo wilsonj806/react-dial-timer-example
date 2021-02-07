@@ -19,13 +19,12 @@ function useTimer(duration) {
     }
     let interval = setInterval(() => {
       setTime(time + 1);
-    }, 1000);
+    }, 50);
     return () => clearInterval(interval);
   }, [time, duration, isPaused]);
   return {
     time,
     formattedTime: formatTime(duration * 60 - time),
-    timeLeft: duration * 60 - time,
     reset,
     togglePause,
     isPaused,
